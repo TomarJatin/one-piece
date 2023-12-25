@@ -1,6 +1,10 @@
+'use client';
 import Image from "next/image";
 import { IoStarSharp } from "react-icons/io5";
 import { FaBolt } from "react-icons/fa6";
+import Modal from "@/components/Modal";
+import { useState } from "react";
+
 
 function MangaCard() {
   return (
@@ -36,6 +40,7 @@ function ChapterCard() {
 }
 
 export default function Home() {
+
   return (
     <main className="md:mt-[40px] mt-[20px] md:px-[40px] px-[20px]">
       {/* Best Chapters */}
