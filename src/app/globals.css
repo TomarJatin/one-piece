@@ -3,3 +3,26 @@
 @tailwind utilities;
 
 
+
+.glass {
+    /* From https://css.glass */
+    background: rgba(37, 34, 34, 0);
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border-top: 1px solid rgba(37, 34, 34, 0.29);
+}
+
+.scroller{
+    display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  
+}
+
+.card {
+    flex: 0 0 auto;
+  }
+
