@@ -1,5 +1,6 @@
 import { ThemeContext } from "@/contexts/Theme";
 import { ThemeContextType } from "@/types";
+import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { FiSearch } from "react-icons/fi";
 import { LuMoonStar } from "react-icons/lu";
@@ -20,6 +21,7 @@ export default function Navbar({
   handleSearch,
 }: NavbarProps) {
   const {theme, setTheme} = useContext(ThemeContext) as ThemeContextType;
+  const router = useRouter();
 
 const handleThemeChange = () => {
   if(theme === "dark") {
@@ -47,7 +49,7 @@ const handleThemeChange = () => {
         </div>
       )}
       <div className="py-[20px] md:px-[40px] px-[20px] bg-[#795ebc] flex flex-row justify-between items-center">
-        <h1 className="md:text-[32px] text-[24px] font-semibold text-white cursor-pointer">
+        <h1 onClick={() => router.push("/")} className="md:text-[32px] text-[24px] font-semibold text-white cursor-pointer">
           Manga18
         </h1>
         <div className="flex flex-row items-center gap-[40px]">

@@ -1,17 +1,23 @@
+"use client";
 import {
   IoReorderThreeOutline,
   IoChevronBackOutline,
   IoChevronForwardSharp,
 } from "react-icons/io5";
 import Image from "next/image";
+import { useContext } from "react";
+import { ThemeContext } from "@/contexts/Theme";
+import { ThemeContextType } from "@/types";
 
 export default function Page({ params }: { params: { slug: string } }) {
+    const { theme } = useContext(ThemeContext) as ThemeContextType;
+
   return (
-    <div>
+    <div className={`${theme === "dark"? "bg-black": "bg-white"}`}>
       <div className="w-full md:px-[40px] px-[20px]">
         {/* TopBar */}
         <div>
-          <p className="text-center font-semibold text-[32px] p-[20px]">
+          <p className={`text-center font-semibold text-[32px] p-[20px] ${theme === "dark"? "text-white": "text-black"}`}>
             One Piece Chapter 103{" "}
           </p>
           <div className="flex flex-row justify-between items-center py-[40px]">
