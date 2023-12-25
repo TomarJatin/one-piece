@@ -1,5 +1,5 @@
-import { ThemeContext } from "@/contexts/Theme";
-import { ThemeContextType } from "@/types";
+import { DataContext } from "@/contexts/DataContext";
+import { DataContextType } from "@/types";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { FiSearch } from "react-icons/fi";
@@ -20,7 +20,7 @@ export default function Navbar({
   setShowSearch,
   handleSearch,
 }: NavbarProps) {
-  const {theme, setTheme} = useContext(ThemeContext) as ThemeContextType;
+  const {theme, setTheme} = useContext(DataContext) as DataContextType;
   const router = useRouter();
 
 const handleThemeChange = () => {

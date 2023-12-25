@@ -6,11 +6,11 @@ import {
 } from "react-icons/io5";
 import Image from "next/image";
 import { useContext } from "react";
-import { ThemeContext } from "@/contexts/Theme";
-import { ThemeContextType } from "@/types";
+import { DataContext } from "@/contexts/DataContext";
+import { DataContextType } from "@/types";
 
 export default function Page({ params }: { params: { slug: string } }) {
-    const { theme } = useContext(ThemeContext) as ThemeContextType;
+    const { theme, selectedChapter } = useContext(DataContext) as DataContextType;
 
   return (
     <div className={`${theme === "dark"? "bg-black": "bg-white"}`}>
@@ -18,7 +18,7 @@ export default function Page({ params }: { params: { slug: string } }) {
         {/* TopBar */}
         <div>
           <p className={`text-center font-semibold text-[32px] p-[20px] ${theme === "dark"? "text-white": "text-black"}`}>
-            One Piece Chapter 103{" "}
+            {selectedChapter?.title}{" "}
           </p>
           <div className="flex flex-row justify-between items-center py-[40px]">
             <button className="p-[10px] bg-[#795ebc] flex flex-row gap-4 items-center rounded-[6px] border-0 outline-none">
@@ -46,8 +46,8 @@ export default function Page({ params }: { params: { slug: string } }) {
         </div>
 
         {/* Chapters */}
-        <div className="flex flex-col items-center justify-center pb-[40px]">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18].map(
+        <div className="flex flex-col items-center justify-center gap-2 pb-[40px]">
+          {selectedChapter && selectedChapter.images.map(
             (item, index) => (
               <div key={index} className="w-[70%]">
                 <Image
@@ -56,7 +56,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                   width={500}
                   height={600}
                   alt="one piece chapter"
-                  src="https://i.ibb.co/YX7jfsB/one-piece-1089-2.jpg"
+                  src={item}
                 />
               </div>
             )

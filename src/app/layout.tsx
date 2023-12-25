@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { useState } from "react";
-import { ThemeProvider } from "@/contexts/Theme";
+import { DataProvider } from "@/contexts/DataContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,13 +26,13 @@ export default function RootLayout({
   }
 
   return (
-    <ThemeProvider>
+    <DataProvider>
       <html lang="en">
       <body className={inter.className}>
         <Navbar searchText={searchText} showSearch={showSearch} setSearchText={setSearchText} setShowSearch={setShowSearch} handleSearch={handleSearch}/>
         {children}
       </body>
     </html>
-    </ThemeProvider>
+    </DataProvider>
   );
 }
