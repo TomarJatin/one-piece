@@ -2,7 +2,7 @@ export interface DataContextType{
     theme: string;
     setTheme: any;
     chapters: Chapter[],
-    selectedChapter: Chapter | null,
+    selectedChapter: number,
     setSelectedChapter: any
 }
 

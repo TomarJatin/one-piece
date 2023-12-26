@@ -47,11 +47,11 @@ export default function Home() {
     .replace(/[^\w-]+/g, "");
   };
 
-  function ChapterCard({ data }: { data: Chapter }) {
+  function ChapterCard({ data, index }: { data: Chapter, index: number }) {
     return (
       <div
         onClick={() => {
-          setSelectedChapter(data);
+          setSelectedChapter(index);
           router.push("/chapter/"+slugify(data.title));
         }}
         className="w-[168px] cursor-pointer"
@@ -72,7 +72,7 @@ export default function Home() {
               theme === "dark" ? "text-white" : "text-black"
             }`}
           >
-            #{data.title}
+            #{index+1}
           </p>
           <p
             className={`font-medium ${
@@ -131,7 +131,7 @@ export default function Home() {
         </div>
         <div className="py-[20px] grid gap-4 xl:grid-cols-8 lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 ">
           {chapters.map((item, index) => (
-            <ChapterCard key={index} data={item} />
+            <ChapterCard key={index} data={item} index={index} />
           ))}
         </div>
       </div>

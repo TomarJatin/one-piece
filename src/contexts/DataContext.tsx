@@ -11,7 +11,16 @@ const DataContext = createContext<DataContextType | null>(null);
 const DataProvider= ({ children }: any) => {
   const [theme, setTheme] = useState("dark");
   const [chapters, setChapters] = useState<Chapter[]>([]);
-  const [selectedChapter, setSelectedChapter] = useState<Chapter | null>(null);
+  const [selectedChapter, setSelectedChapter] = useState<number>(-1);
+
+  const sortByChapter = (a: any, b: any) => {
+    // Extract chapter numbers from titles
+    const chapterA = parseInt(a.title.match(/Chapter (\d+)/)[1]);
+    const chapterB = parseInt(b.title.match(/Chapter (\d+)/)[1]);
+  
+    // Compare chapter numbers
+    return chapterA - chapterB;
+  };
 
   useEffect(() => {
     const fetchChapters = async () => {
@@ -19,7 +28,7 @@ const DataProvider= ({ children }: any) => {
         const chaptersCollection = await getDocs(collection(firestore, 'manga', 'Chainsaw man', 'chapters'));
         const chaptersData: Chapter[] = chaptersCollection.docs.map(
           (doc) => doc.data() as Chapter
-        );
+        ).sort(sortByChapter);
         console.log(chaptersData);
         setChapters(chaptersData);
       } catch (error) {
