@@ -35,7 +35,7 @@ export default function Home() {
         }`}
       >
         <p
-          className={`font-semibold mt-[6px] ${
+          className={`font-semibold mt-[6px] md:text-[16px] text-[14px] ${
             theme === "dark" ? "text-white" : "text-black"
           }`}
         >
@@ -46,10 +46,10 @@ export default function Home() {
             setSelectedChapter(index);
             router.push("/chapter/" + (index+1));
           }}
-          className="px-[30px] py-[10px] cursor-pointer bg-[#64b72a] rounded-md"
+          className="md:px-[30px] px-[20px] py-[10px] cursor-pointer bg-[#64b72a] rounded-md"
         >
           <p
-            className={`font-semibold text-[16px]  text-white`}
+            className={`font-semibold md:text-[16px] text-[12px]  text-white`}
           >
             Read
           </p>
