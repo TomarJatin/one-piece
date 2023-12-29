@@ -15,71 +15,43 @@ interface Chapter {
 }
 
 export default function Home() {
-  const { theme, chapters, setSelectedChapter } = useContext(
+  const { theme, chapters, setSelectedChapter, loading } = useContext(
     DataContext
   ) as DataContextType;
   const router = useRouter();
 
-  function MangaCard() {
-    return (
-      <div className="w-[168px] h-[250px] rounded-[10px] card cursor-pointer">
-        <Image
-          className="w-full h-full rounded-[10px]"
-          src={
-            "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781974709939/chainsaw-man-vol-1-9781974709939_hr.jpg"
-          }
-          width={168}
-          height={250}
-          objectFit="cover"
-          alt="thumbnail"
-        />
-        <div className="bg-black p-[10px] mt-[-42px] z-10 glass">
-          <p className="text-white text-[15px] font-semibold">One Piece #4</p>
-        </div>
-      </div>
-    );
-  }
-
   const slugify = (input: string) => {
     return input
-    .toLowerCase()
-    .replace(/ /g, "-")
-    .replace(/[^\w-]+/g, "");
+      .toLowerCase()
+      .replace(/ /g, "-")
+      .replace(/[^\w-]+/g, "");
   };
 
-  function ChapterCard({ data, index }: { data: Chapter, index: number }) {
+  function ChapterCard({ data, index }: { data: Chapter; index: number }) {
     return (
       <div
-        onClick={() => {
-          setSelectedChapter(index);
-          router.push("/chapter/"+slugify(data.title));
-        }}
-        className="w-[168px] cursor-pointer"
+        className={`w-full rounded-md p-[20px] flex flex-row justify-between items-center  ${
+          theme === "dark" ? "card-dark" : "card-light rounded-sm"
+        }`}
       >
-        <Image
-          className="w-[168px] h-[250px] rounded-[10px]"
-          src={
-            "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781974709939/chainsaw-man-vol-1-9781974709939_hr.jpg"
-          }
-          width={168}
-          height={250}
-          objectFit="cover"
-          alt="thumbnail"
-        />
-        <div className="px-[4px]">
+        <p
+          className={`font-semibold mt-[6px] ${
+            theme === "dark" ? "text-white" : "text-black"
+          }`}
+        >
+          {data.title}
+        </p>
+        <div
+          onClick={() => {
+            setSelectedChapter(index);
+            router.push("/chapter/" + (index+1));
+          }}
+          className="px-[30px] py-[10px] cursor-pointer bg-[#64b72a] rounded-md"
+        >
           <p
-            className={`font-bold mt-[6px] ${
-              theme === "dark" ? "text-white" : "text-black"
-            }`}
+            className={`font-semibold text-[16px]  text-white`}
           >
-            #{index+1}
-          </p>
-          <p
-            className={`font-medium ${
-              theme === "dark" ? "text-white" : "text-black"
-            }`}
-          >
-            Chainsaw Man
+            Read
           </p>
         </div>
       </div>
@@ -88,53 +60,140 @@ export default function Home() {
 
   return (
     <main
-      className={` md:px-[40px] md:pb-[20px] md:pt-[40px] py-[20px] ${
-        theme === "dark" ? "bg-black" : "bg-white"
+      className={` md:px-[40px] md:pb-[20px] md:pt-[20px] py-[20px] min-h-screen px-[20px] ${
+        theme === "dark" ? "bg-dark" : "bg-light"
       }`}
     >
-      {/* Best Chapters */}
-      <div>
-        <div className="flex flex-row items-center md:gap-[20px] gap-[10px] border-b-[1px]">
-          <div className="md:p-[10px] p-[6px] bg-[#795ebc]">
-            <IoStarSharp className="md:w-[20px] w-[16px] md:h-[20px] h-[16px] text-white" />
-          </div>
-          <p
-            className={`font-semibold text-[18px] ${
-              theme === "dark" ? "text-white" : "text-black"
-            }`}
-          >
-            Best Chapters
-          </p>
-        </div>
-        <div className="flex flex-row gap-4 py-[20px] flex-nowrap items-center overflow-x-auto overflow-y-hidden">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(
-            (item, index) => (
-              <MangaCard key={index} />
-            )
-          )}
-        </div>
-      </div>
-
       {/* All Chapters */}
-      <div className="mt-[40px]">
-        <div className="flex flex-row items-center md:gap-[20px] gap-[10px] border-b-[1px]">
-          <div className="md:p-[10px] p-[6px] bg-[#795ebc]">
-            <FaBolt className="md:w-[20px] w-[16px] md:h-[20px] h-[16px] text-white" />
-          </div>
-          <p
-            className={`font-semibold text-[18px] ${
-              theme === "dark" ? "text-white" : "text-black"
-            }`}
+      {!loading ? (<div>
+        <div className="flex md:flex-row flex-col gap-4">
+          <div
+            className={`p-[24px] ${
+              theme === "dark" ? "card-dark" : "card-light"
+            } rounded-[14px] md:w-[600px] w-full flex flex-col items-center h-fit`}
           >
-            All Chapters
-          </p>
+            <h1
+              className={`font-bold text-[32px] text-center ${
+                theme === "dark" ? "text-white" : "text-black"
+              }`}
+            >
+              One Piece
+            </h1>
+            <div className="p-[10px] bg-[#9ca3af] rounded-full w-fit">
+              <Image
+                className="w-[200px] h-[200px] rounded-full"
+                src={
+                  "https://comicvine.gamespot.com/a/uploads/scale_small/11158/111586527/9151765-107.jpg"
+                }
+                width={406}
+                height={640}
+                objectFit="cover"
+                alt="thumbnail"
+              />
+            </div>
+            <div>
+              <p
+                className={`${
+                  theme === "dark" ? "text-white" : "text-black"
+                } mt-[20px]`}
+              >
+                Gol D. Roger, a man referred to as the &quot;Pirate King,&quot;
+                is set to be executed by the World Government. But just before
+                his demise, he confirms the existence of a great treasure, One
+                Piece, located somewhere within the vast ocean known as the
+                Grand Line. Announcing that One Piece can be claimed by anyone
+                worthy enough to reach it, the Pirate King is executed and the
+                Great Age of Pirates begins. Twenty-two years later, a young man
+                by the name of Monkey D. Luffy is ready to embark on his own
+                adventure, searching for One Piece and striving to become the
+                new Pirate King. Armed with just a straw hat, a small boat, and
+                an elastic body, he sets out on a fantastic journey to gather
+                his own crew and a worthy ship that will take them across the
+                Grand Line to claim the greatest status on the high seas.
+              </p>
+              <div className="w-full flex flex-row justify-between items-center mt-[20px]">
+                <div>
+                  <h3
+                    className={`font-bold ${
+                      theme === "dark" ? "text-white" : "text-black"
+                    } `}
+                  >
+                    Type
+                  </h3>
+                  <p
+                    className={`${
+                      theme === "dark" ? "text-[#cccbcb]" : "text-[#302f2f]"
+                    } `}
+                  >
+                    manga
+                  </p>
+                </div>
+                <div>
+                  <h3
+                    className={`font-bold ${
+                      theme === "dark" ? "text-white" : "text-black"
+                    } `}
+                  >
+                    Status
+                  </h3>
+                  <p
+                    className={`${
+                      theme === "dark" ? "text-[#cccbcb]" : "text-[#302f2f]"
+                    } `}
+                  >
+                    publishing
+                  </p>
+                </div>
+                <div>
+                  <h3
+                    className={`font-bold ${
+                      theme === "dark" ? "text-white" : "text-black"
+                    } `}
+                  >
+                    Year
+                  </h3>
+                  <p
+                    className={`${
+                      theme === "dark" ? "text-[#cccbcb]" : "text-[#302f2f]"
+                    } `}
+                  >
+                    1997
+                  </p>
+                </div>
+              </div>
+              <div className="mt-[20px]">
+              <h3
+                    className={`font-bold ${
+                      theme === "dark" ? "text-white" : "text-black"
+                    } `}
+                  >
+                    Genres
+                  </h3>
+                  <p className={`${
+                      theme === "dark" ? "text-[#cccbcb]" : "text-[#302f2f]"
+                    } `}>Action, Adventure, Comedy, Fantasy, Shounen, Super Power</p>
+              </div>
+            </div>
+          </div>
+          <div className=" w-full flex flex-col gap-4">
+            {chapters.map((item, index) => (
+              <ChapterCard key={chapters.length - index-1} data={chapters[chapters.length - index-1]} index={chapters.length - index-1} />
+            ))}
+          </div>
         </div>
-        <div className="py-[20px] grid gap-4 xl:grid-cols-8 lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 ">
-          {chapters.map((item, index) => (
-            <ChapterCard key={index} data={item} index={index} />
-          ))}
-        </div>
+      </div>) : (
+        <div className="w-full flex flex-col items-center">
+        <Image
+              className=" object-contain"
+              width={250}
+              height={250}
+              alt="one piece chapter"
+              src={"/luffy-bounce.gif"}
+              objectFit="contain"
+            />
       </div>
+      )}
+      
     </main>
   );
 }

@@ -46,3 +46,23 @@
     flex: 0 0 auto;
   }
 
+.bg-light{
+  background-color: #e2e9f1;
+}
+
+.bg-dark{
+  background-color: rgb(44, 43, 43);
+}
+
+.card-light{
+  background-color: #fff;
+  box-shadow: 0.1px 0.1px 1px  rgb(48, 48, 48);
+}
+
+.card-light2{
+  background-color: #cccccc;
+}
+
+.card-dark{
+  background-color: #000;
+}

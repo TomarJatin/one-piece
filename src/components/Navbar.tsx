@@ -32,12 +32,12 @@ const handleThemeChange = () => {
 }
 
   return (
-    <div className={`${theme === "dark"? "bg-black": "bg-white"}`}>
+    <div className={`${theme === "dark"? "bg-dark": "bg-light"}`}>
       {showSearch && (
         <div className="p-[20px] flex flex-col items-center">
           <div className="flex flex-row items-center gap-2 border-[1px] p-[10px] md:w-[50%] w-[100%] bg-none">
             <input
-              className={`w-[100%] border-none outline-none ${theme === "dark"? "bg-black": "bg-white"}`}
+              className={`w-[100%] border-none outline-none ${theme === "dark"? "bg-dark": "bg-light"}`}
               value={searchText}
               placeholder="Search here"
               onChange={(e) => setSearchText(e.target.value)}
@@ -50,7 +50,7 @@ const handleThemeChange = () => {
       )}
       <div className="py-[20px] md:px-[40px] px-[20px] bg-[#795ebc] flex flex-row justify-between items-center">
         <h1 onClick={() => router.push("/")} className="md:text-[32px] text-[24px] font-semibold text-white cursor-pointer">
-          Manga18
+          Read One Piece
         </h1>
         <div className="flex flex-row items-center gap-[40px]">
         <div onClick={handleThemeChange}>

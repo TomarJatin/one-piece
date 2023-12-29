@@ -28,7 +28,7 @@ export default function Modal({ open, setOpen, children }: ModalProps) {
 
   return open ? (
     <div className="  w-full">
-      <div className="w-full h-[100vh] fixed bg-black  top-0 opacity-20" />
+      <div className="w-full h-[100vh] fixed bg-dark  top-0 opacity-20" />
       <div
         ref={ref}
         className="w-full flex flex-col items-center justify-center"
