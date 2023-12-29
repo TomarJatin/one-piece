@@ -136,7 +136,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                   theme === "dark" ? "bg-[#212229]" : "bg-[#fff]"
                 } md:w-[120px] w-[100px] py-[10px] cursor-pointer`}
                 onClick={() => {
-                  setSelectedChapter(chapters.length - index-1);
+                  router.push("/chapter/"+(chapters.length - index))
                   setOpen(false)
                 }}
               >
