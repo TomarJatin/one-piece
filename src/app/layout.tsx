@@ -11,8 +11,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 const inter = Inter({ subsets: ["latin"] });
 
  const metadata: Metadata = {
-  title: "Manga18",
-  description: "app to read manga anytime anywhere",
+  title: "read one piece manga",
+  description: "app to read one manga anytime anywhere",
 };
 
 export default function RootLayout({
