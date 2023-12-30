@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import { useState } from "react";
 import { DataProvider } from "@/contexts/DataContext";
 import { GoogleAnalytics } from "nextjs-google-analytics";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,6 +32,7 @@ export default function RootLayout({
       <html lang="en">
       <body className={inter.className}>
       <GoogleAnalytics trackPageViews />
+      <SpeedInsights />
         <Navbar searchText={searchText} showSearch={showSearch} setSearchText={setSearchText} setShowSearch={setShowSearch} handleSearch={handleSearch}/>
         {children}
       </body>
