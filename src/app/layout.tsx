@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { useState } from "react";
 import { DataProvider } from "@/contexts/DataContext";
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
     <DataProvider>
       <html lang="en">
       <body className={inter.className}>
+      <GoogleAnalytics trackPageViews />
         <Navbar searchText={searchText} showSearch={showSearch} setSearchText={setSearchText} setShowSearch={setShowSearch} handleSearch={handleSearch}/>
         {children}
       </body>
