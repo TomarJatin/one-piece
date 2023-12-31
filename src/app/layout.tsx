@@ -32,7 +32,7 @@ export default function RootLayout({
     <DataProvider>
       <html lang="en">
       <body className={inter.className}>
-      <GoogleAnalytics trackPageViews />
+      <GoogleAnalytics trackPageViews gaMeasurementId="G-MN3NFMVJTM" />
       <Analytics />
       <SpeedInsights />
         <Navbar searchText={searchText} showSearch={showSearch} setSearchText={setSearchText} setShowSearch={setShowSearch} handleSearch={handleSearch}/>
