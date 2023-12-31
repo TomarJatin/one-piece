@@ -25,7 +25,7 @@ export default function RootLayout({
   const [searchText, setSearchText] = useState("");
 
   const handleSearch = () => {
-    console.log("searching for.... ", searchText);
+    console.log("search in progress searching for.... ", searchText);
   }
 
   return (
