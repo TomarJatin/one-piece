@@ -8,6 +8,7 @@ import { DataContext } from "@/contexts/DataContext";
 import { DataContextType } from "@/types";
 import { useRouter } from "next/navigation";
 
+
 interface Chapter {
   title: string;
   images: string[];
