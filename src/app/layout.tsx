@@ -38,8 +38,8 @@ export default function RootLayout({
       <SpeedInsights />
         <Navbar searchText={searchText} showSearch={showSearch} setSearchText={setSearchText} setShowSearch={setShowSearch} handleSearch={handleSearch}/>
         {children}
+        <Footer />
       </body>
-      <Footer />
     </html>
     </DataProvider>
   );
