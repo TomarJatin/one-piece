@@ -8,6 +8,7 @@ import { DataProvider } from "@/contexts/DataContext";
 import { GoogleAnalytics } from "nextjs-google-analytics";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,6 +39,7 @@ export default function RootLayout({
         <Navbar searchText={searchText} showSearch={showSearch} setSearchText={setSearchText} setShowSearch={setShowSearch} handleSearch={handleSearch}/>
         {children}
       </body>
+      <Footer />
     </html>
     </DataProvider>
   );
