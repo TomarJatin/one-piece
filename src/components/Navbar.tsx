@@ -65,6 +65,10 @@ export default function Navbar({
     {
       title: "Vinland Saga",
       url: "https://read-vinland-saga.vercel.app/"
+    },
+    {
+      title: "Kaguya Sama - Love is war",
+      url: "https://kaguya-sama.vercel.app/"
     }
   ];
   const ref: any = useRef(null);
