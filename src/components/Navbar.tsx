@@ -32,32 +32,40 @@ export default function Navbar({
   const moreManga = [
     {
       title: "Jujutsu Kaisen",
-      url: "",
+      url: "https://read-jujutsu-kaisen.vercel.app/",
     },
     {
       title: "Chainsaw man",
-      url: "",
+      url: "https://read-chainsaw-man.vercel.app",
     },
     {
       title: "Blue Lock",
-      url: "",
+      url: "https://read-blue-lock.vercel.app/",
     },
     {
       title: "Boku no Hero Academia",
-      url: "",
+      url: "https://read-mha.vercel.app/",
     },
     {
       title: "Kagurabachi",
-      url: "",
+      url: "https://read-kagurabachi.vercel.app/",
     },
     {
       title: "Oshi no Ko",
-      url: "",
+      url: "https://read-oshinoko.vercel.app/",
     },
     {
       title: "Fire punch",
-      url: "",
+      url: "https://fire-punch.vercel.app/",
     },
+    {
+      title: "Demon Slayer",
+      url: "https://read-demon-slayer.vercel.app"
+    },
+    {
+      title: "Vinland Saga",
+      url: "https://read-vinland-saga.vercel.app/"
+    }
   ];
   const ref: any = useRef(null);
 

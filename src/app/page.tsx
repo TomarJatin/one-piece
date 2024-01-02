@@ -82,13 +82,12 @@ export default function Home() {
             </h1>
             <div className="p-[10px] bg-[#9ca3af] rounded-full w-fit">
               <Image
-                className="w-[200px] h-[200px] rounded-full"
+                className="w-[200px] h-[200px] rounded-full object-cover"
                 src={
                   "https://comicvine.gamespot.com/a/uploads/scale_small/11158/111586527/9151765-107.jpg"
                 }
                 width={406}
                 height={640}
-                objectFit="cover"
                 alt="thumbnail"
               />
             </div>
