@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  user-select: none; /* Disable text selection */
+}
+
+img {
+  pointer-events: none;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 5px;
