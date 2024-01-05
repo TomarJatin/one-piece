@@ -17,7 +17,8 @@ export default function Page({ params }: { params: { slug: string } }) {
   ) as DataContextType;
   const router = useRouter();
   const [open, setOpen] = useState(false);
-  const selectedChapter = Number(params.slug[0]) -1 ;
+  const chapterSlug = params.slug[0];
+  const selectedChapter = chapters.findIndex((item: any) => item.title.match(/Chapter (\d+(\.\d+)?)/)[1] === chapterSlug);
 
   const getDemoArray = () => {
     let demoarr = [];
@@ -55,7 +56,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                 <button
                   onClick={() => {
                     if (selectedChapter > 0) {
-                      router.push("/chapter/"+(selectedChapter));
+                      router.push("/chapter/"+ chapters[selectedChapter-1].title.match(/Chapter (\d+(\.\d+)?)/)[1]);
                     }
                   }}
                   className="p-[10px] bg-[#795ebc] flex flex-row gap-4 items-center rounded-[6px]"
@@ -70,7 +71,8 @@ export default function Page({ params }: { params: { slug: string } }) {
                 <button
                   onClick={() => {
                     if (selectedChapter < chapters.length - 1) {
-                      router.push("/chapter/"+(selectedChapter+2));
+                      
+                      router.push("/chapter/"+ chapters[selectedChapter+1].title.match(/Chapter (\d+(\.\d+)?)/)[1]);
                     }
                   }}
                   className="p-[10px] bg-[rgb(121,94,188)] flex flex-row gap-4 items-center rounded-[6px]"
@@ -129,14 +131,14 @@ export default function Page({ params }: { params: { slug: string } }) {
             Select Chapter
           </h3>
           <div className="w-full grid xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-3 grid-cols-3 gap-4">
-            {getDemoArray().map((item, index) => (
+            {chapters.map((item: any, index) => (
               <div
                 key={index}
                 className={`${
                   theme === "dark" ? "bg-[#212229]" : "bg-[#fff]"
                 } md:w-[120px] w-[100px] py-[10px] cursor-pointer`}
                 onClick={() => {
-                  router.push("/chapter/"+(chapters.length - index))
+                  router.push("/chapter/"+ item.title.match(/Chapter (\d+(\.\d+)?)/)[1])
                   setOpen(false)
                 }}
               >
@@ -145,7 +147,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                     theme === "dark" ? "text-white" : "text-black"
                   }`}
                 >
-                  {chapters.length - index}
+                  {item.title.match(/Chapter (\d+(\.\d+)?)/)[1]}
                 </p>
               </div>
             ))}

@@ -142,8 +142,8 @@ export default function Navbar({
             {suggestions.map((item: any, index) => (
               <p
                 onClick={() => {
-                  const chapterTitle = parseInt(item.title.match(/Chapter (\d+)/)[1]);
-                  router.push("/chapter/" + chapterTitle);
+                  const chapterTitle = parseInt(item.title.match(/Chapter (\d+(\.\d+)?)/)[1]);
+                  router.push("/chapter/" + item.title.match(/Chapter (\d+(\.\d+)?)/)[1]);
                 }}
                 key={index}
                 className={`${

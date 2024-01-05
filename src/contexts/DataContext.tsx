@@ -15,8 +15,8 @@ const DataProvider = ({ children }: any) => {
 
   // const sortByChapter = (a: any, b: any) => {
   //   // Extract chapter numbers from titles
-  //   const chapterA = parseInt(a.title.match(/Chapter (\d+)/)[1]);
-  //   const chapterB = parseInt(b.title.match(/Chapter (\d+)/)[1]);
+  //   const chapterA = parseInt(a.title.match(/Chapter (\d+(\.\d+)?)/)[1]);
+  //   const chapterB = parseInt(b.title.match(/Chapter (\d+(\.\d+)?)/)[1]);
 
   //   // Compare chapter numbers
   //   return chapterA - chapterB;

@@ -28,7 +28,7 @@ export default function Home() {
       .replace(/[^\w-]+/g, "");
   };
 
-  function ChapterCard({ data, index }: { data: Chapter; index: number }) {
+  function ChapterCard({ data, index }: { data: any; index: number }) {
     return (
       <div
         className={`w-full rounded-md p-[20px] flex flex-row justify-between items-center  ${
@@ -45,7 +45,7 @@ export default function Home() {
         <div
           onClick={() => {
             setSelectedChapter(index);
-            router.push("/chapter/" + (index+1));
+            router.push("/chapter/" + data.title.match(/Chapter (\d+(\.\d+)?)/)[1]);
           }}
           className="md:px-[30px] px-[20px] py-[10px] cursor-pointer bg-[#64b72a] rounded-md"
         >
