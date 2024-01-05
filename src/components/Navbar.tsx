@@ -1,5 +1,4 @@
 import { DataContext } from "@/contexts/DataContext";
-import { chaptersData } from "@/lib/data";
 import { Chapter, DataContextType } from "@/types";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useRef, useState } from "react";
@@ -24,7 +23,7 @@ export default function Navbar({
   setShowSearch,
   handleSearch,
 }: NavbarProps) {
-  const { theme, setTheme } = useContext(DataContext) as DataContextType;
+  const { theme, setTheme, chapters } = useContext(DataContext) as DataContextType;
   const debouncedSearch = useDebounce(searchText, 500);
   const router = useRouter();
   const [suggestions, setSuggestions] = useState<Chapter[]>([]);
@@ -101,7 +100,7 @@ export default function Navbar({
   const checkSuggestions = () => {
     const _chapters: Chapter[] = [];
     if (debouncedSearch !== "") {
-      chaptersData.map((item: any) => {
+      chapters.map((item: any) => {
         if (item.title.includes(debouncedSearch)) {
           if (_chapters.length < 5) {
             _chapters.push(item);

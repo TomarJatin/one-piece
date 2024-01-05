@@ -2,7 +2,6 @@ import React, { createContext, useState, useEffect } from "react";
 import { DataContextType } from "../types";
 // import { firestore, collection, getDocs } from "@/lib/firebase";
 import { Chapter } from "../types";
-import { chaptersData } from "@/lib/data";
 
 // Define the context
 const DataContext = createContext<DataContextType | null>(null);
@@ -10,9 +9,9 @@ const DataContext = createContext<DataContextType | null>(null);
 // Data Provider component
 const DataProvider = ({ children }: any) => {
   const [theme, setTheme] = useState("dark");
-  const [chapters, setChapters] = useState<Chapter[]>(chaptersData);
+  const [chapters, setChapters] = useState<Chapter[]>([]);
   const [selectedChapter, setSelectedChapter] = useState<number>(-1);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   // const sortByChapter = (a: any, b: any) => {
   //   // Extract chapter numbers from titles
@@ -43,6 +42,24 @@ const DataProvider = ({ children }: any) => {
 
   //   fetchChapters();
   // }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      // setLoading(true);
+      try {
+        const response = await fetch('/data.json');
+        console.log("response", response);
+        const jsonData = await response.json();
+        const newArr = jsonData.reverse();
+        setChapters(newArr);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <DataContext.Provider
