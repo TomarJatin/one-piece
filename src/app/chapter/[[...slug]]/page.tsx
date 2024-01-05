@@ -17,13 +17,13 @@ export default function Page({ params }: { params: { slug: string } }) {
   ) as DataContextType;
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  if(!params.slug){
+    router.push("/chapter/1")
+    return null;
+  }
   const chapterSlug = params.slug[0];
   const selectedChapter = chapters.findIndex((item: any) => item.title.match(/Chapter (\d+(\.\d+)?)/)[1] === chapterSlug);
 
-  const getDemoArray = () => {
-    let demoarr = [];
-    return Array.from({ length: chapters.length })
-  }
 
 
   return (
@@ -138,7 +138,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                   theme === "dark" ? "bg-[#212229]" : "bg-[#fff]"
                 } md:w-[120px] w-[100px] py-[10px] cursor-pointer`}
                 onClick={() => {
-                  router.push("/chapter/"+ item.title.match(/Chapter (\d+(\.\d+)?)/)[1])
+                  router.push("/chapter/"+ chapters[chapters.length - index-1].title.match(/Chapter (\d+(\.\d+)?)/)[1])
                   setOpen(false)
                 }}
               >
@@ -147,7 +147,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                     theme === "dark" ? "text-white" : "text-black"
                   }`}
                 >
-                  {item.title.match(/Chapter (\d+(\.\d+)?)/)[1]}
+                  {chapters[chapters.length - index-1].title.match(/Chapter (\d+(\.\d+)?)/)[1]}
                 </p>
               </div>
             ))}
