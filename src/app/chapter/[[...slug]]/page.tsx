@@ -90,7 +90,7 @@ export default function Page({ params }: { params: { slug: string } }) {
         {/* Chapters */}
         <div className={`flex flex-col items-center justify-center gap-2  ${theme === "dark" ? "card-dark": "card-light2"}`}>
           {selectedChapter !== -1 && chapters.length > 0 &&
-            chapters[selectedChapter].images.map((item, index) => (
+            chapters[selectedChapter].images.map((item: any, index: number) => (
               <div key={index} className={`max-w-[990px] w-full`}>
                 <Image
                   key={index}
@@ -131,7 +131,7 @@ export default function Page({ params }: { params: { slug: string } }) {
             Select Chapter
           </h3>
           <div className="w-full grid xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-3 grid-cols-3 gap-4">
-            {chapters.map((item: any, index) => (
+            {chapters.map((item: any, index: number) => (
               <div
                 key={index}
                 className={`${

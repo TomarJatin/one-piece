@@ -176,7 +176,7 @@ export default function Home() {
             </div>
           </div>
           <div className=" w-full flex flex-col gap-4">
-            {chapters.map((item, index) => (
+            {chapters.map((item: any, index: number) => (
               <ChapterCard key={chapters.length - index-1} data={chapters[chapters.length - index-1]} index={chapters.length - index-1} />
             ))}
           </div>
